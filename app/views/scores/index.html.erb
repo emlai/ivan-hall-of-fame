@@ -1,0 +1,24 @@
+<h1><span>Iter Vehemens ad Necem</span> <span>Hall of Fame</span></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th>Character</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for score in Score.order(points: :desc) %>
+      <tr>
+        <% if score.player.attnam_username %>
+          <td><%= link_to score.player.name, score.player.attnam_link %></td>
+        <% else %>
+          <td><%= score.player.name %></td>
+        <% end %>
+        <td><%= score.character %></td>
+        <td><%= score.points %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
