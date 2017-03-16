@@ -1,24 +1,13 @@
-# README
+# IVAN Hall of Fame
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a global hall of fame for the game [Iter Vehemens ad Necem][1], aka
+IVAN. This project uses [Rails][3], a server-side web framework for the Ruby
+programming language. To start up the server, make sure you have Ruby and Rails
+installed, then execute `rails server`. Use `rails test` to run the tests.
 
-Things you may want to cover:
+A fork of IVAN with integration for this project (i.e. automatic high-score
+syncing) is being implemented [here][2].
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[1]: https://github.com/Attnam/ivan
+[2]: https://github.com/emlai/ivan/tree/global-hall-of-fame
+[3]: https://rubyonrails.org
