@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <% for score in Score.order(points: :desc) %>
+    <% for score in Score.sorted %>
       <tr>
         <% if score.player.attnam_username %>
           <td><%= link_to score.player.name, score.player.attnam_link %></td>
