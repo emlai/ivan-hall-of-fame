@@ -14,7 +14,7 @@
     <% for score, rank in Score.sorted.each_with_index %>
       <tr>
         <td><%= rank + 1 %></td>
-        <td><%= score.points %></td>
+        <td><%= number_with_delimiter(score.points) %></td>
         <td><%= score.character %></td>
         <% if score.player.attnam_username %>
           <td><%= link_to score.player.name, score.player.attnam_link %></td>
