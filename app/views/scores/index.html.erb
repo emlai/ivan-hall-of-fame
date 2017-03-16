@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Player</th>
       <th>Character</th>
       <th>Score</th>
@@ -10,8 +11,9 @@
     </tr>
   </thead>
   <tbody>
-    <% for score in Score.sorted %>
+    <% for score, rank in Score.sorted.each_with_index %>
       <tr>
+        <td><%= rank + 1 %></td>
         <% if score.player.attnam_username %>
           <td><%= link_to score.player.name, score.player.attnam_link %></td>
         <% else %>
