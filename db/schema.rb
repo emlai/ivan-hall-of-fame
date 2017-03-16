@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316134751) do
+ActiveRecord::Schema.define(version: 20170316171421) do
 
   create_table "players", force: :cascade do |t|
     t.string   "name"
     t.string   "attnam_username"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.integer  "player_id"
+    t.integer  "points"
+    t.string   "character"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_scores_on_player_id"
   end
 
 end
