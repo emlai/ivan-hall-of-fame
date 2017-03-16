@@ -6,6 +6,7 @@
       <th>Player</th>
       <th>Character</th>
       <th>Score</th>
+      <th>Date</th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +19,11 @@
         <% end %>
         <td><%= score.character %></td>
         <td><%= score.points %></td>
+        <td>
+          <span title="<%= score.created_at %>">
+            <%= score.created_at.strftime("%F") %>
+          </span>
+        </td>
       </tr>
     <% end %>
   </tbody>
