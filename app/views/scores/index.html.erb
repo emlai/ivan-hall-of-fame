@@ -4,9 +4,9 @@
   <thead>
     <tr>
       <th></th>
-      <th>Player</th>
-      <th>Character</th>
       <th>Score</th>
+      <th>Character</th>
+      <th>Player</th>
       <th>Date</th>
     </tr>
   </thead>
@@ -14,13 +14,13 @@
     <% for score, rank in Score.sorted.each_with_index %>
       <tr>
         <td><%= rank + 1 %></td>
+        <td><%= score.points %></td>
+        <td><%= score.character %></td>
         <% if score.player.attnam_username %>
           <td><%= link_to score.player.name, score.player.attnam_link %></td>
         <% else %>
           <td><%= score.player.name %></td>
         <% end %>
-        <td><%= score.character %></td>
-        <td><%= score.points %></td>
         <td>
           <span title="<%= score.created_at %>">
             <%= score.created_at.strftime("%F") %>
