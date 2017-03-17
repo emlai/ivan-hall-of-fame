@@ -1,5 +1,7 @@
 # IVAN Hall of Fame
 
+[![Build Status](https://travis-ci.org/emlai/ivan-hall-of-fame.svg?branch=master)](https://travis-ci.org/emlai/ivan-hall-of-fame)
+
 This is a global hall of fame for the game [Iter Vehemens ad Necem][1], aka
 IVAN. This project uses [Rails][3], a server-side web framework for the Ruby
 programming language. To start up the server, make sure you have Ruby and Rails
