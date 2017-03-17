@@ -4,6 +4,7 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
   test "index shows added scores in descending order with relevant information" do
     Score.create(player: players(:igor), character: "HolyBananaGrower", entry: "died", points: 500)
     Score.create(player: players(:vlad), character: "HolyBananaGrower", entry: "died", points: 1000)
+    Score.create(character: "The Who", entry: "died", points: 666)
     get root_url
     assert_equal response.body.scan("Igor").count, 1
     assert_equal response.body.scan("Vladimir").count, 1
