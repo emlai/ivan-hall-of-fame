@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   root 'scores#index'
   get '/highscores', to: 'scores#csv'
+  post '/submit_score', to: 'scores#submit_score'
 end
