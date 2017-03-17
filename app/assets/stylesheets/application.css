@@ -31,11 +31,12 @@ span {
 table {
   margin: 0 auto;
   width: 100%;
-  max-width: 500px;
+  max-width: 800px;
 }
 
 td, th {
   text-align: left;
+  vertical-align: top;
 }
 
 a {

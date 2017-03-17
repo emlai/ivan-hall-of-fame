@@ -1,6 +1,6 @@
 class Score < ApplicationRecord
-  belongs_to :player
-  validates :player, :points, :character, presence: true
+  belongs_to :player, optional: true
+  validates :points, :character, :entry, presence: true
 
   def self.sorted
     Score.order(points: :desc)
