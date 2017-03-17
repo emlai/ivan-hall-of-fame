@@ -10,6 +10,6 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
     assert_equal response.body.scan("<a href=\"#{players(:igor).attnam_link}\">Igor</a>").count, 1
     assert_equal response.body.scan("<a href=\"#{players(:vlad).attnam_link}\">Vladimir</a>").count, 0
     assert_equal response.body.scan("HolyBananaGrower").count, 2
-    assert_operator response.body.index("1000"), :<, response.body.index("500")
+    assert_operator response.body.index("1,000"), :<, response.body.index("500")
   end
 end
