@@ -2,12 +2,17 @@ require 'test_helper'
 
 class PlayerTest < ActiveSupport::TestCase
   test "should not save player without name" do
-    player = Player.new
+    player = Player.new(password: "secret")
     assert_not player.save
   end
 
-  test "should save player with name but without Attnam username" do
+  test "should not save player without password" do
     player = Player.new(name: "Igor")
+    assert_not player.save
+  end
+
+  test "should save player with name and password but without Attnam username" do
+    player = Player.new(name: "Igor2", password: "secret")
     assert player.save
   end
 

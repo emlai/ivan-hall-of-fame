@@ -1,6 +1,8 @@
 class Player < ApplicationRecord
   has_many :scores
-  validates :name, presence: true
+  has_secure_password
+  validates :password, length: { minimum: 6 }
+  validates :name, uniqueness: true, presence: true
 
   def attnam_link
     "https://attnam.com/users/" + attnam_username if attnam_username
