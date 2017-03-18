@@ -1,4 +1,4 @@
-# IVAN Hall of Fame
+# [IVAN Hall of Fame](https://ivan-hall-of-fame.herokuapp.com)
 
 [![Build Status](https://travis-ci.org/emlai/ivan-hall-of-fame.svg?branch=master)](https://travis-ci.org/emlai/ivan-hall-of-fame)
 
