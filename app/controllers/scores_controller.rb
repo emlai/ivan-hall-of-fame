@@ -12,5 +12,6 @@ class ScoresController < ApplicationController
   def submit_score
     character, entry = params[:entry].split(", ", 2)
     Score.create(points: params[:score], character: character, entry: entry)
+    head :ok, content_type: "text/html"
   end
 end
