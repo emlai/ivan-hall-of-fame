@@ -9,6 +9,14 @@
   </head>
 
   <body>
+    <nav>
+      <%= link_to 'Scores', root_path %>
+      <%= link_to 'Players', players_path %>
+      <%= link_to 'Sign up', signup_path %>
+    </nav>
+    <% if notice %>
+      <p id="notice"><%= notice %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

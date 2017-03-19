@@ -1,0 +1,22 @@
+<h1>Players</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Attnam profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for player in Player.all %>
+      <tr>
+        <td><%= player.name %></td>
+        <% if player.attnam_username %>
+          <td><%= link_to player.attnam_username, player.attnam_link %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

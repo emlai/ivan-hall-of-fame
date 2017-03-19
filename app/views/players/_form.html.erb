@@ -1,0 +1,38 @@
+<%= form_for(player) do |f| %>
+  <% if player.errors.any? %>
+    <div id="error_explanation">
+      <h2>Could not sign up because of the following errors:</h2>
+      <ul>
+      <% player.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @player.new_record? %>
+    <div class="field">
+      <%= f.label :name, "Username" %>
+      <%= f.text_field :name %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :attnam_username, "Attnam.com username" %>
+    <%= f.text_field :attnam_username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
