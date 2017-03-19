@@ -11,7 +11,7 @@ class ScoresController < ApplicationController
 
   def submit_score
     player = Player.find_by(name: params[:username])
-    if !player || !player.authenticate(params[:password])
+    if params[:username].present? && (!player || !player.authenticate(params[:password]))
       return head :unauthorized, content_type: "text/html"
     end
 

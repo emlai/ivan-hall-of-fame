@@ -30,4 +30,13 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
     assert_equal Score.order("created_at").last.player, players(:igor)
   end
+
+  test "submits score as anonymous if no username was provided" do
+    assert_difference 'Score.count' do
+      post submit_score_url, params: { format: 'json', username: "",
+        password: "", score: 234, entry: "iggy, killed by a mutant bunny" }
+    end
+    assert_response 200
+    assert_nil Score.order("created_at").last.player
+  end
 end
