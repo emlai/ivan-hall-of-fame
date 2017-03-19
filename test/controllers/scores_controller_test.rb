@@ -13,4 +13,21 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
     assert_equal response.body.scan("HolyBananaGrower").count, 2
     assert_operator response.body.index("1,000"), :<, response.body.index("500")
   end
+
+  test "doesn't submit score with invalid username or password" do
+    assert_no_difference 'Score.count' do
+      post submit_score_url, params: { format: 'json', username: "Igor",
+        password: "wrong", score: 234, entry: "iggy, killed by a mutant bunny" }
+    end
+    assert_response 401
+  end
+
+  test "submits score with valid username and password" do
+    assert_difference 'Score.count' do
+      post submit_score_url, params: { format: 'json', username: "Igor",
+        password: "secret", score: 234, entry: "iggy, killed by a mutant bunny" }
+    end
+    assert_response 200
+    assert_equal Score.order("created_at").last.player, players(:igor)
+  end
 end

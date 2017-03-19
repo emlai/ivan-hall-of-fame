@@ -10,8 +10,13 @@ class ScoresController < ApplicationController
   end
 
   def submit_score
+    player = Player.find_by(name: params[:username])
+    if !player || !player.authenticate(params[:password])
+      return head :unauthorized, content_type: "text/html"
+    end
+
     character, entry = params[:entry].split(", ", 2)
-    Score.create(points: params[:score], character: character, entry: entry)
+    Score.create(player: player, points: params[:score], character: character, entry: entry)
     head :ok, content_type: "text/html"
   end
 end
