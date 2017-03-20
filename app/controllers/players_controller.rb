@@ -15,6 +15,14 @@ class PlayersController < ApplicationController
     end
   end
 
+  def get_auth_token
+    player = Player.find_by(name: params[:username])
+    if player and player.authenticate(params[:password])
+      return render plain: player.auth_token
+    end
+    head :unauthorized
+  end
+
   private
 
   def player_params

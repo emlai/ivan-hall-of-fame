@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   post '/submit_score', to: 'scores#submit_score'
   get '/players', to: 'players#index'
   get '/signup', to: 'players#new'
+  get '/get_auth_token', to: 'players#get_auth_token'
   post '/players', to: 'players#create'
 end

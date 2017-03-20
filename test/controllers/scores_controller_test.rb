@@ -17,7 +17,7 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
   test "doesn't submit score with invalid username or password" do
     assert_no_difference 'Score.count' do
       post submit_score_url, params: { format: 'json', username: "Igor",
-        password: "wrong", score: 234, entry: "iggy, killed by a mutant bunny" }
+        auth_token: players(:vlad).auth_token, score: 234, entry: "iggy, killed by a mutant bunny" }
     end
     assert_response 401
   end
@@ -25,7 +25,7 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
   test "submits score with valid username and password" do
     assert_difference 'Score.count' do
       post submit_score_url, params: { format: 'json', username: "Igor",
-        password: "secret", score: 234, entry: "iggy, killed by a mutant bunny" }
+        auth_token: players(:igor).auth_token, score: 234, entry: "iggy, killed by a mutant bunny" }
     end
     assert_response 200
     assert_equal Score.order("created_at").last.player, players(:igor)
@@ -34,7 +34,7 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
   test "submits score as anonymous if no username was provided" do
     assert_difference 'Score.count' do
       post submit_score_url, params: { format: 'json', username: "",
-        password: "", score: 234, entry: "iggy, killed by a mutant bunny" }
+        score: 234, entry: "iggy, killed by a mutant bunny" }
     end
     assert_response 200
     assert_nil Score.order("created_at").last.player

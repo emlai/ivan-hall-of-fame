@@ -4,7 +4,9 @@ igor:
   name: "Igor"
   attnam_username: "iggy"
   password_digest: "$2a$10$6Rt2IFkwek1/aRkIz7yuAOHHxDqsW7ou3NNE9FUnRTX/tafBD8X6K" # hash of "secret"
+  auth_token: "VxvME2gLGtSoLUP2xtqJeFQD"
 
 vlad:
   name: "Vladimir"
   password_digest: "$2a$10$XrrjYgWgexlc5af5/8wl9.w4eY24a837RKapbWoT/ZIfw5ipsFAde" # hash of "secret"
+  auth_token: "6nkRa8HZ2ZE9iMgSfNUMJwFo"
