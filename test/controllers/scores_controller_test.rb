@@ -6,11 +6,11 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
     Score.create(player: players(:vlad), character: "HolyBananaGrower", entry: "died", points: 1000)
     Score.create(character: "The Who", entry: "died", points: 666)
     get root_url
-    assert_equal response.body.scan("Igor").count, 1
-    assert_equal response.body.scan("Vladimir").count, 1
-    assert_equal response.body.scan("<a href=\"#{players(:igor).attnam_link}\">Igor</a>").count, 1
-    assert_equal response.body.scan("<a href=\"#{players(:vlad).attnam_link}\">Vladimir</a>").count, 0
-    assert_equal response.body.scan("HolyBananaGrower").count, 2
+    assert_equal 1, response.body.scan("Igor").count
+    assert_equal 1, response.body.scan("Vladimir").count
+    assert_equal 1, response.body.scan("<a href=\"#{players(:igor).attnam_link}\">Igor</a>").count
+    assert_equal 0, response.body.scan("<a href=\"#{players(:vlad).attnam_link}\">Vladimir</a>").count
+    assert_equal 2, response.body.scan("HolyBananaGrower").count
     assert_operator response.body.index("1,000"), :<, response.body.index("500")
   end
 
@@ -28,7 +28,7 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
         auth_token: players(:igor).auth_token, score: 234, entry: "iggy, killed by a mutant bunny" }
     end
     assert_response 200
-    assert_equal Score.order("created_at").last.player, players(:igor)
+    assert_equal players(:igor), Score.order("created_at").last.player
   end
 
   test "submits score as anonymous if no username was provided" do

@@ -23,6 +23,6 @@ class PlayerTest < ActiveSupport::TestCase
 
   test "generates correct Attnam link if has Attnam username" do
     player = Player.new(name: "Igor", attnam_username: "iggy")
-    assert_equal player.attnam_link, "https://attnam.com/users/iggy"
+    assert_equal "https://attnam.com/users/iggy", player.attnam_link
   end
 end
