@@ -17,10 +17,8 @@
         <td><%= number_with_delimiter(score.points) %></td>
         <td class="character"><%= score.character %></td>
         <td><%= score.entry %></td>
-        <% if score.player&.attnam_username.present? %>
-          <td><%= link_to score.player.name, score.player.attnam_link %></td>
-        <% elsif score.player %>
-          <td><%= score.player.name %></td>
+        <% if score.player %>
+          <td><%= link_to score.player.name, score.player  %></td>
         <% else %>
           <td title="unregistered player">?</td>
         <% end %>

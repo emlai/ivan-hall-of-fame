@@ -10,7 +10,7 @@
   <tbody>
     <% for player in Player.all %>
       <tr>
-        <td><%= player.name %></td>
+        <td><%= link_to player.name, player %></td>
         <% if player.attnam_username %>
           <td><%= link_to player.attnam_username, player.attnam_link %></td>
         <% else %>

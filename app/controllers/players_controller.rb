@@ -1,6 +1,11 @@
 class PlayersController < ApplicationController
   def index
   end
+  
+  def show
+    @player = Player.find_by_name(params[:id])
+    @scores = Score.sorted(player: @player)
+  end
 
   def new
     @player = Player.new

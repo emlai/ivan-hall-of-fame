@@ -6,10 +6,10 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
     Score.create(player: players(:vlad), character: "HolyBananaGrower", entry: "died", points: 1000, version: versions(:v0509))
     Score.create(character: "The Who", entry: "died", points: 666, version: versions(:v0509))
     get root_url
-    assert_equal 1, response.body.scan("Igor").count
-    assert_equal 1, response.body.scan("Vladimir").count
-    assert_equal 1, response.body.scan("<a href=\"#{players(:igor).attnam_link}\">Igor</a>").count
-    assert_equal 0, response.body.scan("<a href=\"#{players(:vlad).attnam_link}\">Vladimir</a>").count
+    assert_equal 2, response.body.scan("Igor").count
+    assert_equal 2, response.body.scan("Vladimir").count
+    assert_equal 1, response.body.scan("<a href=\"/players/Igor\">Igor</a>").count
+    assert_equal 1, response.body.scan("<a href=\"/players/Vladimir\">Vladimir</a>").count
     assert_equal 2, response.body.scan("HolyBananaGrower").count
     assert_operator response.body.index("1,000"), :<, response.body.index("500")
   end

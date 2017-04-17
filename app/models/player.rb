@@ -8,4 +8,8 @@ class Player < ApplicationRecord
   def attnam_link
     "https://attnam.com/users/" + attnam_username if attnam_username
   end
+
+  def to_param
+    name
+  end
 end
