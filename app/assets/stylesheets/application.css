@@ -53,6 +53,10 @@ td, th {
   vertical-align: top;
 }
 
+td.character {
+  white-space: nowrap;
+}
+
 a {
   color: white;
   text-decoration: none;

@@ -15,7 +15,7 @@
       <tr>
         <td><%= rank + 1 %></td>
         <td><%= number_with_delimiter(score.points) %></td>
-        <td><%= score.character %></td>
+        <td class="character"><%= score.character %></td>
         <td><%= score.entry %></td>
         <% if score.player&.attnam_username.present? %>
           <td><%= link_to score.player.name, score.player.attnam_link %></td>
