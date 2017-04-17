@@ -2,6 +2,7 @@ class ScoresController < ApplicationController
   protect_from_forgery with: :null_session
 
   def index
+    @scores = Score.sorted
   end
 
   def csv

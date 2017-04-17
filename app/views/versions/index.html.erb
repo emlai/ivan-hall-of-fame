@@ -1,0 +1,18 @@
+<h1>Versions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Version</th>
+      <th>Scores submitted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for version in Version.all %>
+      <tr>
+        <td><%= link_to version.string, version %></td>
+        <td><%= version.scores.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

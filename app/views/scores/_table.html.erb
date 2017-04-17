@@ -1,0 +1,36 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Score</th>
+      <th>Character</th>
+      <th>Ending</th>
+      <th>Player</th>
+      <th>Version</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for score, rank in @scores.each_with_index %>
+      <tr>
+        <td><%= rank + 1 %></td>
+        <td><%= number_with_delimiter(score.points) %></td>
+        <td><%= score.character %></td>
+        <td><%= score.entry %></td>
+        <% if score.player&.attnam_username.present? %>
+          <td><%= link_to score.player.name, score.player.attnam_link %></td>
+        <% elsif score.player %>
+          <td><%= score.player.name %></td>
+        <% else %>
+          <td title="unregistered player">?</td>
+        <% end %>
+        <td><%= link_to score.version.string, score.version if score.version %></td>
+        <td>
+          <span title="<%= score.created_at %>">
+            <%= score.created_at.strftime("%F") %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

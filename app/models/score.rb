@@ -3,7 +3,7 @@ class Score < ApplicationRecord
   belongs_to :version
   validates :points, :character, :entry, presence: true
 
-  def self.sorted
-    Score.order(points: :desc)
+  def self.sorted(filter = {})
+    Score.where(filter).order(points: :desc)
   end
 end
