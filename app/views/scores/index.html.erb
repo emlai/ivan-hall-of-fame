@@ -8,6 +8,7 @@
       <th>Character</th>
       <th>Ending</th>
       <th>Player</th>
+      <th>Version</th>
       <th>Date</th>
     </tr>
   </thead>
@@ -25,6 +26,7 @@
         <% else %>
           <td title="unregistered player">?</td>
         <% end %>
+        <td><%= score.version&.string %></td>
         <td>
           <span title="<%= score.created_at %>">
             <%= score.created_at.strftime("%F") %>

@@ -16,7 +16,9 @@ class ScoresController < ApplicationController
     end
 
     character, entry = params[:entry].split(", ", 2)
-    Score.create(player: player, points: params[:score], character: character, entry: entry)
+    version = Version.find_or_create_by(string: params[:version])
+    Score.create(player: player, points: params[:score], character: character,
+                 entry: entry, version: version)
     head :ok, content_type: "text/html"
   end
 end

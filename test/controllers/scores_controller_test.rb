@@ -2,9 +2,9 @@ require 'test_helper'
 
 class ScoresControllerTest < ActionDispatch::IntegrationTest
   test "index shows added scores in descending order with relevant information" do
-    Score.create(player: players(:igor), character: "HolyBananaGrower", entry: "died", points: 500)
-    Score.create(player: players(:vlad), character: "HolyBananaGrower", entry: "died", points: 1000)
-    Score.create(character: "The Who", entry: "died", points: 666)
+    Score.create(player: players(:igor), character: "HolyBananaGrower", entry: "died", points: 500, version: versions(:v05010))
+    Score.create(player: players(:vlad), character: "HolyBananaGrower", entry: "died", points: 1000, version: versions(:v0509))
+    Score.create(character: "The Who", entry: "died", points: 666, version: versions(:v0509))
     get root_url
     assert_equal 1, response.body.scan("Igor").count
     assert_equal 1, response.body.scan("Vladimir").count

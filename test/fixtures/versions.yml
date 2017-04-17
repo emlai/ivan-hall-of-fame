@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+v0509:
+  string: "0.50.9"
+
+v05010:
+  string: "0.50.10"
