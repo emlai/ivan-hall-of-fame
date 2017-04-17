@@ -1,30 +1,32 @@
+<div id="score-table">
+
 <table>
   <thead>
     <tr>
       <th></th>
-      <th>Score</th>
-      <th>Character</th>
-      <th>Ending</th>
-      <th>Player</th>
-      <th>Version</th>
-      <th>Date</th>
+      <th class="sort" data-sort="rank">Score</th>
+      <th class="sort" data-sort="character">Character</th>
+      <th class="sort" data-sort="ending">Ending</th>
+      <th class="sort" data-sort="player">Player</th>
+      <th class="sort" data-sort="version">Version</th>
+      <th class="sort" data-sort="date">Date</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="list">
     <% for score, rank in @scores.each_with_index %>
       <tr>
-        <td><%= rank + 1 %></td>
-        <td><%= number_with_delimiter(score.points) %></td>
+        <td class="rank"><%= rank + 1 %></td>
+        <td class="score"><%= number_with_delimiter(score.points) %></td>
         <td class="character"><%= score.character %></td>
-        <td><%= score.entry %></td>
+        <td class="ending"><%= score.entry %></td>
         <% if score.player %>
-          <td><%= link_to score.player.name, score.player  %></td>
+          <td class="player"><%= link_to score.player.name, score.player  %></td>
         <% else %>
-          <td title="unregistered player">?</td>
+          <td class="player" title="unregistered player">?</td>
         <% end %>
-        <td><%= link_to score.version.string, score.version if score.version %></td>
+        <td class="version"><%= link_to score.version.string, score.version if score.version %></td>
         <td>
-          <span title="<%= score.created_at %>">
+          <span class="date" title="<%= score.created_at %>">
             <%= score.created_at.strftime("%F") %>
           </span>
         </td>
@@ -32,3 +34,13 @@
     <% end %>
   </tbody>
 </table>
+
+</div>
+
+<script type="text/javascript">
+  var options = {
+    valueNames: ['rank', 'score', 'character', 'ending', 'player', 'version', 'date']
+  };
+  var scores = new List('score-table', options);
+  scores.sort('rank', { order: 'asc' }); // Register active column.
+</script>
