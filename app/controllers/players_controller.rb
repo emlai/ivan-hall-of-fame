@@ -21,11 +21,15 @@ class PlayersController < ApplicationController
   end
 
   def get_auth_token
-    player = Player.find_by(name: params[:username])
-    if player and player.authenticate(params[:password])
-      return render plain: player.auth_token
+    player = authenticate_with_http_basic do |username, password|
+      Player.find_by(name: username)&.authenticate(password)
     end
-    head :unauthorized
+
+    if player
+      render plain: player.auth_token
+    else
+      request_http_basic_authentication
+    end
   end
 
   private
