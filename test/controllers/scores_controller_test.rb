@@ -14,12 +14,13 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
     assert_operator response.body.index("1,000"), :<, response.body.index("500")
   end
 
-  test "doesn't submit score with invalid username or password" do
-    assert_no_difference 'Score.count' do
+  test "submits score as anonymous if username or password is invalid" do
+    assert_difference 'Score.count' do
       post submit_score_url, params: { format: 'json', username: "Igor",
         auth_token: players(:vlad).auth_token, score: 234, entry: "iggy, killed by a mutant bunny" }
     end
-    assert_response 401
+    assert_response 200
+    assert_nil Score.order("created_at").last.player
   end
 
   test "submits score with valid username and password" do
