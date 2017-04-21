@@ -40,4 +40,13 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
     assert_nil Score.order("created_at").last.player
   end
+
+  test "doesn't accept score with non-positive points" do
+    assert_no_difference ['Score.count'] do
+      post submit_score_url, params: { format: 'json', username: "Igor",
+        score: 0, entry: "iggy, killed by a mutant bunny" }
+      post submit_score_url, params: { format: 'json', username: "Igor",
+        score: -1, entry: "iggy, killed by a mutant bunny" }
+    end
+  end
 end

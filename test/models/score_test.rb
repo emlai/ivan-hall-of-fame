@@ -13,4 +13,9 @@ class ScoreTest < ActiveSupport::TestCase
     assert_not Score.new(player: players(:igor), points: 666, character: "Igor", version: versions(:v0509)).save
     assert_not Score.new(player: players(:igor), points: 666, character: "Igor", entry: test_entry).save
   end
+
+  test "should not save score with non-positive points" do
+    assert_not Score.new(points: 0, character: "Igor", entry: test_entry, version: versions(:v0509)).save
+    assert_not Score.new(points: -1, character: "Igor", entry: test_entry, version: versions(:v0509)).save
+  end
 end
