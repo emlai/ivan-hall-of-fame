@@ -45,8 +45,11 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference ['Score.count'] do
       post submit_score_url, params: { format: 'json', username: "Igor",
         score: 0, entry: "iggy, killed by a mutant bunny" }
+      assert_response 400
+
       post submit_score_url, params: { format: 'json', username: "Igor",
         score: -1, entry: "iggy, killed by a mutant bunny" }
+      assert_response 400
     end
   end
 end

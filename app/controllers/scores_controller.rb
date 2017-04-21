@@ -15,8 +15,8 @@ class ScoresController < ApplicationController
                             auth_token: params[:auth_token])
     character, entry = params[:entry].split(", ", 2)
     version = Version.find_or_create_by(string: params[:version])
-    Score.create(player: player, points: params[:score], character: character,
-                 entry: entry, version: version)
-    head :ok, content_type: "text/html"
+    score = Score.new(player: player, points: params[:score], character: character,
+                      entry: entry, version: version)
+    head(score.save ? :ok : :bad_request)
   end
 end
